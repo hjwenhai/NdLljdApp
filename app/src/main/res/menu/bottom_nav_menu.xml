@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_controller_new"
+        android:icon="@drawable/ic_controller_new_black_24dp"
+        android:title="@string/title_controller_new" />
+
+    <item
+        android:id="@+id/navigation_controller_search"
+        android:icon="@drawable/ic_controller_search_black_24dp"
+        android:title="@string/title_controller_search" />
+
+    <item
+        android:id="@+id/navigation_local_search"
+        android:icon="@drawable/ic_local_search_black_24dp"
+        android:title="@string/title_local_search" />
+
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/ic_setting_black_24dp"
+        android:title="@string/title_setting" />
+
+</menu>

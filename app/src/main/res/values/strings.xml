@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">流量检定系统</string>
+    <!--登录-->
+    <string name="login">登录</string>
+    <string name="account_number">账号</string>
+    <string name="password">密码</string>
+    <!--底部按钮-->
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_controller_new">最新数据</string>
+    <string name="title_controller_search">数据查询</string>
+    <string name="title_local_search">本地查询</string>
+    <string name="title_setting">设置</string>
+</resources>

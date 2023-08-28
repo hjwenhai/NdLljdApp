@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_controller_new">
+
+    <fragment
+        android:id="@+id/navigation_controller_new"
+        android:name="com.yzh.ndlljdapp.ui.controller_new.ControllerNewFragment"
+        android:label="@string/title_controller_new"
+        tools:layout="@layout/fragment_controller_new" />
+
+    <fragment
+        android:id="@+id/navigation_controller_search"
+        android:name="com.yzh.ndlljdapp.ui.controller_search.ControllerSearchFragment"
+        android:label="@string/title_controller_search"
+        tools:layout="@layout/fragment_controller_search" />
+
+    <fragment
+        android:id="@+id/navigation_local_search"
+        android:name="com.yzh.ndlljdapp.ui.local_search.LocalSearchFragment"
+        android:label="@string/title_local_search"
+        tools:layout="@layout/fragment_local_search" />
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.yzh.ndlljdapp.ui.setting.SettingFragment"
+        android:label="@string/title_setting"
+        tools:layout="@layout/fragment_setting" />
+</navigation>
