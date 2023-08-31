@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,15 @@ public class ControllerNewFragment extends Fragment {
 
         final TextView textView = binding.textHome;
         controllerNewViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+        Button btnGetNestData = binding.btnGetNestData;
+        btnGetNestData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                controllerNewViewModel.getNewestFlowData();
+            }
+        });
+
         return root;
     }
 

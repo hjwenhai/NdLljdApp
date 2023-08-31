@@ -6,4 +6,7 @@ public class Constants {
 
     public final static int LOGIN_UPDATE_USER = 3;
     public final static int LOGIN_DELETE_USER = 3;
+    public final static String BASE_URL = "http://192.168.0.101:65000/";
+
+
 }
