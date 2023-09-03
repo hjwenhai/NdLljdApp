@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
+    <!--加一个隔断框-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+       android:background="@color/grey"/>
+    <!--出厂编号-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="@string/calInfor_devNo"
+        android:textSize="@dimen/normal_text_size" />
+
+    <TextView
+        android:id="@+id/calInfor_devNo_content"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text=""
+        android:textSize="@dimen/normal_text_size"
+        />
+    </LinearLayout>
+
+    <!--检定时间-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@string/calInfor_date"
+            android:textSize="@dimen/normal_text_size" />
+
+        <TextView
+            android:id="@+id/calInfor_date_content"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text=""
+            android:textSize="@dimen/normal_text_size"
+            />
+    </LinearLayout>
+
+    <!--检定流量计类型-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@string/calInfor_type"
+            android:textSize="@dimen/normal_text_size" />
+
+        <TextView
+            android:id="@+id/calInfor_type_content"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text=""
+            android:textSize="@dimen/normal_text_size"
+            />
+    </LinearLayout>
+    <!--加一个隔断框-->
+
+    <!--最大示值误差-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@string/calInfor_accuracy"
+            android:textSize="@dimen/normal_text_size" />
+
+        <TextView
+            android:id="@+id/calInfor_accuracy_content"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text=""
+            android:textSize="@dimen/normal_text_size"
+            />
+    </LinearLayout>
+
+    <!--重复性-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@string/calInfor_uncertainty"
+            android:textSize="@dimen/normal_text_size" />
+
+        <TextView
+            android:id="@+id/calInfor_uncertainty_content"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text=""
+            android:textSize="@dimen/normal_text_size"
+            />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_getVerificationTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/calInfor_getTable" />
+</LinearLayout>

@@ -35,7 +35,7 @@ public class OkHttpUtil {
     private static OkHttpUtil sOkHttpUtil;
     private OkHttpClient.Builder mOkHttpClientBuilder;
     private OkHttpClient mOkHttpClient;
-//    private Handler mHandler;
+    private Handler mHandler;
 
     private OkHttpUtil() {
         mOkHttpClientBuilder = new OkHttpClient.Builder();
@@ -44,7 +44,7 @@ public class OkHttpUtil {
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .connectTimeout(6, TimeUnit.SECONDS);
         mOkHttpClient = mOkHttpClientBuilder.build();
-//        mHandler = new Handler(Looper.getMainLooper());
+        mHandler = new Handler(Looper.getMainLooper());
 
     }
 
@@ -156,7 +156,7 @@ public class OkHttpUtil {
 //            Set<Map.Entry<String, String>> paramsEntries = params.entrySet();
 //            for (Map.Entry<String, String> entry : paramsEntries) {
 //                formBodyBuilder.add(entry.getKey(), entry.getValue());
-//            }        
+//            }
 //        }
 //        RequestBody requestBody = formBodyBuilder.build();
         return new Request.Builder()
@@ -225,21 +225,31 @@ public class OkHttpUtil {
 
 
     /**
-     * 调用请求失败对应的回调方法.
+     * 调用请求失败对应的回调方法，利用handler.post使得回调方法在UI线程中执行
      */
     private void sendFailedCallback(final Call call, final Exception e, final OkHttpResultCallback callback) {
-        if (callback != null) {
-            callback.onError(call, e);
-        }
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (callback != null) {
+                    callback.onError(call, e);
+                }
+            }
+        });
     }
 
     /**
      * 调用请求成功对应的回调方法，利用handler.post使得回调方法在UI线程中执行
      */
     private void sendSuccessCallback(final byte[] bytes, final OkHttpResultCallback okHttpResultCallback) {
-        if (okHttpResultCallback != null) {
-            okHttpResultCallback.onResponse(bytes);
-        }
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (okHttpResultCallback != null) {
+                    okHttpResultCallback.onResponse(bytes);
+                }
+            }
+        });
     }
 
     /**
@@ -248,4 +258,5 @@ public class OkHttpUtil {
     public void cancelAllRequest() {
         mOkHttpClient.dispatcher().cancelAll();
     }
+
 }

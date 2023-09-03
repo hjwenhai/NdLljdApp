@@ -6,12 +6,13 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.yzh.ndlljdapp.entity.FlowDoc;
 import com.yzh.ndlljdapp.entity.User;
 
 /**
  * 指明是需要从那个class文件中创建数据库，并必须指明版本号
  */
-@Database(entities = {User.class}, version = 1,exportSchema = false)
+@Database(entities = {User.class,FlowDoc.class}, version = 1,exportSchema = false)
 public abstract class FlowDataAppDataBase extends RoomDatabase {
 
     private static FlowDataAppDataBase INSTANCE;//声明单例对象，减小数据库开销
@@ -26,4 +27,5 @@ public abstract class FlowDataAppDataBase extends RoomDatabase {
         return INSTANCE;
     }
     public abstract UserDao getUserDao();//创建抽象的dao方法以便获取dao对象
+    public abstract FlowDocDao getFlowDocDao();//创建抽象的dao方法以便获取dao对象
 }

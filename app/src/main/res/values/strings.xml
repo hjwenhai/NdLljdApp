@@ -10,4 +10,13 @@
     <string name="title_controller_search">数据查询</string>
     <string name="title_local_search">本地查询</string>
     <string name="title_setting">设置</string>
+
+    <!--calInfor-->
+    <string name="calInfor_devNo">出厂编号：</string>
+    <string name="calInfor_date">检定时间：</string>
+    <string name="calInfor_type">流量计类型：</string>
+    <string name="calInfor_accuracy">最大示值误差：</string>
+    <string name="calInfor_uncertainty">重复性：</string>
+    <string name="calInfor_getTable">生成检定表</string>
+
 </resources>
