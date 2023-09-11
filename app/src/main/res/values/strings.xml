@@ -18,5 +18,12 @@
     <string name="calInfor_accuracy">最大示值误差：</string>
     <string name="calInfor_uncertainty">重复性：</string>
     <string name="calInfor_getTable">生成检定表</string>
+    <string name="calInfor_openTable">打开检定表</string>
+    <string name="calInfor_filepath">文件名：</string>
+    <!-- 辅助信息-->
+    <string name="aux_customer">客户名称：</string>
+    <string name="aux_manufacturer">制造厂家：</string>
 
+    <!--弹窗提示-->
+    <string name="toast_customer_manufacturer">客户名称与制造厂家不能为空</string>
 </resources>

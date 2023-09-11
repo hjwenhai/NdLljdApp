@@ -9,11 +9,8 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.yzh.ndlljdapp.entity.FlowDoc;
-import com.yzh.ndlljdapp.entity.User;
 
 import java.util.List;
-
-import kotlinx.coroutines.flow.Flow;
 
 @Dao
 public interface FlowDocDao {
@@ -25,8 +22,10 @@ public interface FlowDocDao {
                     "  AND (:manufactor IS NULL OR manufactor =:manufactor)" +
                     "  AND (:fileName IS NULL OR fileName = :fileName)"
     )
-    LiveData<List<FlowDoc>> getFlowDocList(@Nullable String devNo, @Nullable Long date, @Nullable String customer,
+    List<FlowDoc> getFlowDocList(@Nullable String devNo, @Nullable Long date, @Nullable String customer,
                                            @Nullable String manufactor, @Nullable String fileName);
+    @Query("SELECT * FROM flowDoc WHERE devNo=:devNo" )
+    List<FlowDoc> getFlowDocList(String devNo);
 
 
     /**

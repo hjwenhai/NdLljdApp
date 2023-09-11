@@ -1,17 +1,23 @@
 package com.yzh.ndlljdapp.ui.controller_new;
 
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.yzh.ndlljdapp.config.Constants;
-import com.yzh.ndlljdapp.dao.FlowDataAppDataBase;
 import com.yzh.ndlljdapp.entity.CalData;
 import com.yzh.ndlljdapp.entity.CalInfor;
+import com.yzh.ndlljdapp.entity.FlowDoc;
 import com.yzh.ndlljdapp.entity.ResponseCalData;
 import com.yzh.ndlljdapp.entity.ResponseCalInfor;
+import com.yzh.ndlljdapp.model.FlowDocModel;
 import com.yzh.ndlljdapp.util.GsonUtil;
 import com.yzh.ndlljdapp.util.OkHttpResultCallback;
 import com.yzh.ndlljdapp.util.OkHttpUtil;
@@ -26,8 +32,7 @@ public class ControllerNewViewModel extends ViewModel {
     private final MutableLiveData<String> mText;    //提示信息
     private final MutableLiveData<CalInfor> mCalInfor; //检定信息
     private final MutableLiveData<List<CalData>> mCalDatas; //检定数据
-    private final MutableLiveData<Boolean> mIsInLocalDataBase; //在本地数据库中是否有该记录
-
+    private final MutableLiveData<FlowDoc> flowDoc; //平板上的数据记录
     public ControllerNewViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is home fragment");
@@ -35,19 +40,25 @@ public class ControllerNewViewModel extends ViewModel {
         mCalInfor.setValue(null);
         mCalDatas=new MutableLiveData<>();
         mCalDatas.setValue(null);
-        mIsInLocalDataBase=new MutableLiveData<>();
-        mIsInLocalDataBase.setValue(false);
+
+        flowDoc =new MutableLiveData<>();
+        flowDoc.setValue(null);
     }
 
     public LiveData<String> getText() {
         return mText;
     }
-
+    public void setText(String text) {
+        mText.setValue(text);
+    }
     public LiveData<CalInfor> getCalInfor(){
         return mCalInfor;
     }
     public LiveData<List<CalData>> getCalDatas(){return mCalDatas;}
-    public LiveData<Boolean> getIsInLocalDataBase(){return mIsInLocalDataBase;}
+    public LiveData<FlowDoc> getFlowDoc(){return flowDoc;}
+    public void setFlowDoc(FlowDoc flowDoc){this.flowDoc.setValue(flowDoc);}
+
+
     /**
      * 从控制器获取最新的检定信息
      */
@@ -94,6 +105,9 @@ public class ControllerNewViewModel extends ViewModel {
         });
     }
 
+    /**
+     * 从控制器获取检定记录
+     */
     public void getCalDatasFromController(){
         CalInfor calInfor=mCalInfor.getValue();
         if(calInfor!=null){
@@ -111,7 +125,7 @@ public class ControllerNewViewModel extends ViewModel {
                 @Override
                 public void onResponse(byte[] bytes) {
                     try {
-                        mText.setValue("获取最新的检定信息成功！");
+                        mText.setValue("获取检定数据成功！");
                         String s = new String(bytes,"UTF-8");
                         ResponseCalData responseCalData = GsonUtil.gsonToBean(s, ResponseCalData.class);
                         switch (responseCalData.getError_code()){
@@ -140,4 +154,30 @@ public class ControllerNewViewModel extends ViewModel {
         }
     }
 
+    public void queryFlowDoc(Context context){
+        Handler handler=new Handler(Looper.getMainLooper()){
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                if (msg.what == Constants.QUERY_FLOW_DOC) {
+                    List<FlowDoc> list=(List<FlowDoc>)msg.obj;
+                    if (list!=null && list.size()>0){
+                        flowDoc.setValue(list.get(0));
+//                        mIsInLocalDataBase.setValue(true);
+                        Log.d("查询本地数据库中的记录",list.toString());
+                    }
+                    else{
+                        flowDoc.setValue(null);
+//                        mIsInLocalDataBase.setValue(false);
+                    }
+
+                }
+            }
+        };
+        FlowDocModel flowDocModel=new FlowDocModel(context);
+        CalInfor calInfor = mCalInfor.getValue();
+        flowDocModel.getFlowDocList(calInfor.getDevNo(),calInfor.getDate(),null,null,null,handler);
+//        flowDocModel.getFlowDocList("test4",handler);
+
+    }
 }

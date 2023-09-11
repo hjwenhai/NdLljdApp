@@ -4,12 +4,19 @@ package com.yzh.ndlljdapp.model;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 
 import com.yzh.ndlljdapp.config.Constants;
 import com.yzh.ndlljdapp.dao.FlowDataAppDataBase;
 import com.yzh.ndlljdapp.dao.UserDao;
+import com.yzh.ndlljdapp.entity.FlowDoc;
 import com.yzh.ndlljdapp.entity.User;
+
+import java.util.List;
 
 public class UserModel {
     private FlowDataAppDataBase dataBase;
@@ -91,5 +98,6 @@ public class UserModel {
             }
         }).start();
     }
+
 
 }

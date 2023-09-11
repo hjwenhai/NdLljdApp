@@ -49,4 +49,7 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'com.google.code.gson:gson:2.8.2'
+    //  3.17,4.12都有问题，3.9通过
+    implementation 'org.apache.poi:poi:3.9'
+    implementation 'org.apache.poi:poi-ooxml:3.9'
 }
