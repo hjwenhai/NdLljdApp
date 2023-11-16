@@ -19,11 +19,32 @@
     <string name="calInfor_uncertainty">重复性：</string>
     <string name="calInfor_getTable">生成检定表</string>
     <string name="calInfor_openTable">打开检定表</string>
+    <string name="calInfor_exportTable">导出检定表</string>
     <string name="calInfor_filepath">文件名：</string>
     <!-- 辅助信息-->
     <string name="aux_customer">客户名称：</string>
     <string name="aux_manufacturer">制造厂家：</string>
+    <!--模板选择框提示文字-->
+    <string name="aux_tableName">生成检定记录模板</string>
+    <!--控制器顶部搜索-->
+    <string name="controller_search_devno">出厂编号,可为空</string>
+    <string name="controller_search_startdate">开始</string>
+    <string name="controller_search_enddate">结束</string>
+    <string name="controller_search_clearDateTimeTip">清除时间</string>
+    <string name="controller_search_searchBtnTip">按条件搜索</string>
+    <!--本地顶部搜索-->
+    <string name="local_search_customer">客户名称</string>
+    <string name="local_search_manufacturer">制造厂家</string>
+    <string name="local_search_tableTemplateName">检定记录模板：</string>
+    <string name="local_search_deleteTable">删除检定表</string>
+    <!--设置-->
+    <string name="setting_ip">控制器IP</string>
+    <string name="modify_password">修改密码</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
 
     <!--弹窗提示-->
     <string name="toast_customer_manufacturer">客户名称与制造厂家不能为空</string>
+    <string name="toast_tableTemplateName">请选择生成检定记录模板</string>
+
 </resources>

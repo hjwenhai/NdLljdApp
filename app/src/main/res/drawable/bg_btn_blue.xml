@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    <item android:drawable="@color/bg_login_state_pressed" android:state_pressed="true"/>-->
+<!--    <item android:drawable="@color/bg_login_state_normal"/>-->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="2dp" />
+            <solid android:color="@color/bg_login_state_pressed" />
+            <stroke android:width="2dp" android:color="@color/bg_login_state_pressed" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="2dp" />
+            <solid android:color="@color/bg_login_state_normal" />
+            <stroke android:width="2dp" android:color="@color/bg_login_state_normal" />
+        </shape>
+    </item>
+</selector>

@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize">
-
+    android:layout_height="match_parent">
+<!--    android:paddingTop="?attr/actionBarSize"-->
+    <!--自动生成程序上面一行有此语句，实际运行时发现fragment顶部多了一段actinBarSize距离-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="0dp"
@@ -29,6 +29,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/mobile_navigation" />
-
+        app:navGraph="@navigation/mobile_navigation"
+        android:layout_marginBottom="?attr/actionBarSize"/>
+        <!--上面一行解决Fragment内容被导航栏遮挡的问题-->
 </androidx.constraintlayout.widget.ConstraintLayout>

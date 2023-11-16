@@ -26,6 +26,9 @@ public class FlowDoc {
     private long date;
 
     @NonNull
+    @ColumnInfo(name = "tableName")
+    private String tableName;
+    @NonNull
     @ColumnInfo(name = "customer")
     private String customer;
 
@@ -47,9 +50,10 @@ public class FlowDoc {
      * @param fileName
      */
     @Ignore
-    public FlowDoc(@NonNull String devNo, long date, @NonNull String customer, @NonNull String manufactor, @NonNull String fileName) {
+    public FlowDoc(@NonNull String devNo, long date,@NonNull String tableName, @NonNull String customer, @NonNull String manufactor, @NonNull String fileName) {
         this.devNo = devNo;
         this.date = date;
+        this.tableName=tableName;
         this.customer = customer;
         this.manufactor = manufactor;
         this.fileName = fileName;
@@ -100,6 +104,15 @@ public class FlowDoc {
     }
 
     @NonNull
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(@NonNull String tableName) {
+        this.tableName = tableName;
+    }
+
+    @NonNull
     public String getFileName() {
         return fileName;
     }
@@ -108,6 +121,9 @@ public class FlowDoc {
         this.fileName = fileName;
     }
 
+
+
+
     @Override
     public String toString() {
         DateFormat format=new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
@@ -115,6 +131,7 @@ public class FlowDoc {
                 "id=" + id +
                 ", devNo='" + devNo + '\'' +
                 ", date=" + format.format(new Date(date)) +
+                ", tableName='" + tableName + '\'' +
                 ", customer='" + customer + '\'' +
                 ", manufactor='" + manufactor + '\'' +
                 ", fileName='" + fileName + '\'' +

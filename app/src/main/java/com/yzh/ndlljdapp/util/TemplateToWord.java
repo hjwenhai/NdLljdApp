@@ -180,8 +180,10 @@ public class TemplateToWord {
         insertTextMap.put("DT1",format.format(new Date(calInfor.getDate())));
 
         //检定数据
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             if(calDataList!=null && i<calDataList.size()){
+                //序号
+                insertTextMap.put("N"+(i+1),String.valueOf(i+1));
                 //瞬时流量
                 insertTextMap.put("Q"+(i+1),decimalFormat.format(calDataList.get(i).getInstantFlow()));
                 //被校表单次累积值
@@ -189,16 +191,17 @@ public class TemplateToWord {
                 //标准表单次累积值
                 insertTextMap.put("B"+(i+1),decimalFormat.format(calDataList.get(i).getStandardTotalFlow()));
                 //温度
-                insertTextMap.put("T"+(i+1),decimalFormat.format(calDataList.get(i).getTemp()));
+                //insertTextMap.put("T"+(i+1),decimalFormat.format(calDataList.get(i).getTemp()));
                 //基本误差
                 insertTextMap.put("E"+(i+1),decimalFormat.format(calDataList.get(i).getE()));
             }
             else {
                 //如果没有值，替换为空
+                insertTextMap.put("N"+(i+1),"");
                 insertTextMap.put("Q"+(i+1),"");
                 insertTextMap.put("X"+(i+1),"");
                 insertTextMap.put("B"+(i+1),"");
-                insertTextMap.put("T"+(i+1),"");
+//                insertTextMap.put("T"+(i+1),"");
                 insertTextMap.put("E"+(i+1),"");
             }
         }
@@ -228,15 +231,11 @@ public class TemplateToWord {
                     case VOLUME1:
                         sourceFileName = "sourceV1.docx";
                         break;
-                    case VOLUME2:
-                        sourceFileName = "sourceV2.docx";
-                        break;
+
                     case QUALITY1:
                         sourceFileName = "sourceQ1.docx";
                         break;
-                    case QUALITY2:
-                        sourceFileName = "sourceQ2.docx";
-                        break;
+
                 }
                 try {
                     InputStream is = context.getAssets().open(sourceFileName);

@@ -1,10 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".ui.controller_search.ControllerSearchFragment">
+    <!--顶部搜索-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <!--出厂编号-->
+        <EditText
+            android:id="@+id/controller_search_devno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:hint="@string/controller_search_devno"
+            android:inputType="text"
+            android:textSize="@dimen/normal_text_size" />
+
+        <ImageButton
+            android:id="@+id/controller_search_searchBtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="centerCrop"
+            android:tooltipText="@string/controller_search_searchBtnTip"
+            app:srcCompat="@drawable/bg_search_button" />
+    </LinearLayout>
+    <!--时间搜索框-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+<!--        <Button
+            android:id="@+id/controller_search_startDateTimeBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:minHeight="48dp"
+            android:text="@string/controller_search_startdate"
+            android:textSize="@dimen/normal_text_size" />-->
+
+        <TextView
+            android:id="@+id/controller_search_startDateTimeTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:minHeight="48dp"
+            android:gravity="center"
+            android:textSize="@dimen/normal_text_size"
+            android:background="@drawable/bg_backline"
+            android:layout_marginLeft="5dp"/>
+<!--
+        <Button
+            android:id="@+id/controller_search_endDateTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:minHeight="48dp"
+            android:text="@string/controller_search_enddate"
+            android:textSize="@dimen/normal_text_size" />-->
+
+        <TextView
+            android:id="@+id/controller_search_endDateTimeTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:textSize="@dimen/normal_text_size"
+            android:background="@drawable/bg_backline"
+            android:layout_marginLeft="5dp"/>
+
+        <ImageButton
+            android:id="@+id/controller_search_clearDateTime"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="centerCrop"
+            android:tooltipText="@string/controller_search_clearDateTimeTip"
+            app:srcCompat="@drawable/bg_clear_button" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/text_dashboard"
@@ -19,4 +97,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/controller_search_recycleview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" />
+
+</LinearLayout>

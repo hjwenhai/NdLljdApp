@@ -6,14 +6,14 @@ import androidx.lifecycle.ViewModel;
 
 public class SettingModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+//    private final MutableLiveData<String> mText;
 
     public SettingModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is setting fragment");
+//        mText = new MutableLiveData<>();
+//        mText.setValue("This is setting fragment");
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
+//    public LiveData<String> getText() {
+//        return mText;
+//    }
 }

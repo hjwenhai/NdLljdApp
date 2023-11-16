@@ -13,7 +13,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/iv_app_ic_white" />
+        android:src="@drawable/iv_app_ic_login" />
     <TextView
         android:id="@+id/tv_account_type_act_login"
         android:layout_width="wrap_content"
@@ -58,29 +58,15 @@
         android:textSize="@dimen/title_text_size"
         tools:ignore="TextFields" />
 
-    <!--        android:background="@drawable/bg_state_login" />-->
-
-
     <Button
         android:id="@+id/btn_login_act_login"
-        style="@android:style/Widget.Material.Light.Button"
+        style="@style/btn_blue_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/editTextMargin"
         android:text="@string/login"
-        android:textColor="@color/white"
         android:textSize="@dimen/title_text_size" />
-    <!--        android:background="@drawable/bg_state_login"  button 背景颜色设置无效 -->
-<!--    <Button
-        android:id="@+id/btn_login_act_register"
-        style="@android:style/Widget.Material.Light.Button"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/editTextMargin"
-        android:text="注册测试"
-        android:textColor="@color/white"
-        android:textSize="@dimen/title_text_size" />
-    &lt;!&ndash;        android:background="@drawable/bg_state_login"  button 背景颜色设置无效 &ndash;&gt;-->
+
     <TextView
         android:id="@+id/tv_app_name_act_login"
         android:layout_width="wrap_content"

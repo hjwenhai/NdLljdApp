@@ -11,6 +11,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.yzh.ndlljdapp.config.AppConfig;
 import com.yzh.ndlljdapp.config.Constants;
 import com.yzh.ndlljdapp.entity.CalData;
 import com.yzh.ndlljdapp.entity.CalInfor;
@@ -32,10 +33,11 @@ public class ControllerNewViewModel extends ViewModel {
     private final MutableLiveData<String> mText;    //提示信息
     private final MutableLiveData<CalInfor> mCalInfor; //检定信息
     private final MutableLiveData<List<CalData>> mCalDatas; //检定数据
+
     private final MutableLiveData<FlowDoc> flowDoc; //平板上的数据记录
     public ControllerNewViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("点击按钮从控制器获取最新数据！");
         mCalInfor=new MutableLiveData<>();
         mCalInfor.setValue(null);
         mCalDatas=new MutableLiveData<>();
@@ -63,7 +65,8 @@ public class ControllerNewViewModel extends ViewModel {
      * 从控制器获取最新的检定信息
      */
     public void getNewestFlowDataFromController(){
-        String url  = Constants.BASE_URL + "v1/calinfo/querry?newest=true";
+//        String url  = Constants.BASE_URL + "v1/calinfo/querry?newest=true";
+        String url  = AppConfig.getInstance().getBaseUrl() + "v1/calinfo/querry?newest=true";
         OkHttpUtil.getInstance().getAsync(url, new OkHttpResultCallback() {
             {
                 mText.setValue("正在从控制器获取最新的检定信息...");
@@ -111,7 +114,8 @@ public class ControllerNewViewModel extends ViewModel {
     public void getCalDatasFromController(){
         CalInfor calInfor=mCalInfor.getValue();
         if(calInfor!=null){
-            String url  = Constants.BASE_URL + "v1/caldata/querry?infoid="+ calInfor.getId();
+//            String url  = Constants.BASE_URL + "v1/caldata/querry?infoid="+ calInfor.getId();
+            String url  = AppConfig.getInstance().getBaseUrl() + "v1/caldata/querry?infoid="+ calInfor.getId();
             OkHttpUtil.getInstance().getAsync(url, new OkHttpResultCallback() {
                 {
                     mText.setValue("正在从控制器获取最新的检定数据...");
@@ -119,7 +123,7 @@ public class ControllerNewViewModel extends ViewModel {
                 @Override
                 public void onError(Call call, Exception e) {
                     mText.setValue("控制器没有响应,请检查是否连接到控制器,控制器的IP是否设置正确！");
-                    mCalInfor.setValue(null);
+                    mCalDatas.setValue(null);
                 }
 
                 @Override
@@ -176,7 +180,7 @@ public class ControllerNewViewModel extends ViewModel {
         };
         FlowDocModel flowDocModel=new FlowDocModel(context);
         CalInfor calInfor = mCalInfor.getValue();
-        flowDocModel.getFlowDocList(calInfor.getDevNo(),calInfor.getDate(),null,null,null,handler);
+        flowDocModel.getFlowDocList(calInfor.getDevNo(),calInfor.getDate(),handler);
 //        flowDocModel.getFlowDocList("test4",handler);
 
     }

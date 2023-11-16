@@ -17,13 +17,19 @@ public interface FlowDocDao {
     @Query(
             "SELECT * FROM flowDoc " +
                     "WHERE (:devNo IS NULL OR devNo= :devNo)" +
-                    "  AND (:date IS NULL OR date = :date)" +
-                    "  AND (:customer IS NULL OR customer =:customer)" +
-                    "  AND (:manufactor IS NULL OR manufactor =:manufactor)" +
-                    "  AND (:fileName IS NULL OR fileName = :fileName)"
+                    "  AND (:date IS NULL OR date = :date)"
     )
-    List<FlowDoc> getFlowDocList(@Nullable String devNo, @Nullable Long date, @Nullable String customer,
-                                           @Nullable String manufactor, @Nullable String fileName);
+    List<FlowDoc> getFlowDocList(@Nullable String devNo, @Nullable Long date);
+    @Query(
+            "SELECT * FROM flowDoc " +
+                    "WHERE (:devNo IS NULL OR devNo= :devNo)" +
+                    "  AND (:startDate IS NULL OR date >= :startDate)" +
+                    "  AND (:endDate IS NULL OR date <= :endDate)" +
+                    "  AND (:customer IS NULL OR customer =:customer)" +
+                    "  AND (:manufactor IS NULL OR manufactor =:manufactor)"
+    )
+    List<FlowDoc> getFlowDocList(@Nullable String devNo, @Nullable Long startDate, @Nullable Long endDate,@Nullable String customer,
+                                           @Nullable String manufactor);
     @Query("SELECT * FROM flowDoc WHERE devNo=:devNo" )
     List<FlowDoc> getFlowDocList(String devNo);
 

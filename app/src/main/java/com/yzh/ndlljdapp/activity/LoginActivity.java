@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.yzh.ndlljdapp.MainActivity;
 import com.yzh.ndlljdapp.R;
+import com.yzh.ndlljdapp.config.AppConfig;
 import com.yzh.ndlljdapp.config.Constants;
 import com.yzh.ndlljdapp.entity.User;
 import com.yzh.ndlljdapp.model.UserModel;
@@ -27,6 +28,10 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //如果主题中有ActionBar，可通过下面语句隐藏ActionBar
+//        if (getSupportActionBar() != null){
+//            getSupportActionBar().hide();
+//        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         EditText mEtUsername=findViewById(R.id.et_username_act_login);
@@ -62,7 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                             if (msg.what == Constants.LOGIN_CHECK_USER) {
                                 User user = (User) msg.obj;
                                 if (user != null){
-                                    Toast.makeText(getApplicationContext(), "登录成功 " + user.toString(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), user.getName()+"登录成功 " , Toast.LENGTH_SHORT).show();
+                                    AppConfig.getInstance().setLoginUser(user);
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 }
                                 else

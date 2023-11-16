@@ -16,6 +16,12 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    // 自定义打包名称
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "NdLljd_${buildType.name}_v${versionName}_${generateTime()}.apk"
+        }
+    }
 
     buildTypes {
         release {
@@ -31,7 +37,10 @@ android {
         viewBinding true
     }
 }
-
+//构建包时间
+def generateTime() {
+    return new Date().format("yyyyMMdd_HHmmss")
+}
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -52,4 +61,10 @@ dependencies {
     //  3.17,4.12都有问题，3.9通过
     implementation 'org.apache.poi:poi:3.9'
     implementation 'org.apache.poi:poi-ooxml:3.9'
+    /** RecyleView dependencies*/
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
+    // For control over item selection of both touch and mouse driven selection
+    implementation ("androidx.recyclerview:recyclerview-selection:1.1.0")
+    //读写U盘文件,U盘
+    implementation 'com.github.mjdev:libaums:0.5.5'
 }
